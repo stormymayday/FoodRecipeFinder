@@ -1,3 +1,5 @@
-import num from './test';
-const x = 23;
-console.log(`${num}, variable x = ${x}`);
+import Search from './models/Search';
+
+const search = new Search('pizza');
+console.log(search);
+search.getResults();
