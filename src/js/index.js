@@ -1,3 +1,3 @@
-import x from './test';
-
-console.log(`${x}`);
+import num from './test';
+const x = 23;
+console.log(`${num}, variable x = ${x}`);
