@@ -31,21 +31,23 @@ const controlSearch = async () => {
 		// Rendering the loader
 		renderLoader(elements.searchResult);
 
-		// Searching the recipes
-		await state.search.getResults();
+		try {
+			// Searching the recipes
+			await state.search.getResults();
 
-		// Clearing the loader
-		clearLoader();
+			// Clearing the loader
+			clearLoader();
 
-		// Rendering the results
-		searchView.renderResults(state.search.result);
+			// Rendering the results
+			searchView.renderResults(state.search.result);
+		} catch (error) {
+			alert('Something went wrong.');
+
+			// Clearing the loader
+			clearLoader();
+		}
 	}
 };
-
-// Recipe Controller
-const r = new Recipe(47746);
-r.getRecipe();
-console.log(r);
 
 // Search form event listener (on submit)
 elements.searchForm.addEventListener('submit', (event) => {
@@ -67,3 +69,33 @@ elements.searchResPages.addEventListener('click', (event) => {
 		searchView.renderResults(state.search.result, goToPage);
 	}
 });
+
+// Recipe Controller
+const controlRecipe = async () => {
+	// Getting recipe ID from url
+	const id = window.location.hash.replace('#', '');
+	// console.log(id);
+
+	if (id) {
+		// Prepearing UI
+		// Creating new Recipe object and saving in the Global State
+		state.recipe = new Recipe(id);
+
+		try {
+			// Getting recipe data
+			await state.recipe.getRecipe();
+
+			// Calling Recipe class methods
+			state.recipe.calcCookingTime();
+			state.recipe.calcServings();
+
+			// Rendering the Recipe
+			console.log(state.recipe);
+		} catch (error) {
+			alert('Something went wrong.');
+		}
+	}
+};
+
+// Adding Event Listener on events: hashchange in the url, page load:
+[ 'hashchange', 'load' ].forEach((event) => window.addEventListener(event, controlRecipe));

@@ -11,6 +11,7 @@ export default class Search {
 			this.result = res.data.recipes;
 		} catch (error) {
 			console.log(error);
+			alert('Invalid search term.');
 		}
 	}
 }
