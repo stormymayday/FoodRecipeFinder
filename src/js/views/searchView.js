@@ -4,7 +4,15 @@ export const getInput = () => elements.searchInput.value;
 
 export const clearInput = () => { elements.searchInput.value = ''; };
 
-export const clearResults = () => { elements.searchResultList.innerHTML = ''; };
+export const clearResults = () => {
+
+    // clearing results
+    elements.searchResultList.innerHTML = '';
+
+    // clearing buttons
+    elements.searchResPages.innerHTML = '';
+
+};
 
 const limitRecipeTitle = (title, lengthLimit = 17) => {
 
@@ -55,8 +63,58 @@ const renderRecipe = recipe => {
 
 };
 
-export const renderResults = recipes => {
+// type: 'prev' or 'next'
+const createButton = (page, type) => `
+    <button class="btn-inline results__btn--${type}" data-goto=${type === 'prev' ? page - 1 : page + 1}>
+    <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
+        <svg class="search__icon">
+            <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
+        </svg>
+    </button>
+`;
 
-    recipes.forEach(renderRecipe);
+// Pagination buttons 
+const renderButtons = (page, numResults, resPerPage) => {
+
+    const pages = Math.ceil(numResults / resPerPage);
+
+    let button;
+
+    if (page === 1 && pages > 1) {
+
+        // Single next page button
+        button = createButton(page, 'next');
+
+    } else if (page < pages) {
+
+        // Both buttons
+        button = `
+            
+        ${createButton(page, 'prev')}
+        ${createButton(page, 'next')}
+    
+    `;
+
+    } else if (page === pages && pages > 1) {
+
+        // Single previous page button
+        button = createButton(page, 'prev');
+    }
+
+    // Inserting button(s)
+    elements.searchResPages.insertAdjacentHTML('afterbegin', button);
+
+};
+
+export const renderResults = (recipes, page = 1, resPerPage = 10) => {
+
+    const start = (page - 1) * resPerPage;
+    const end = page * resPerPage;
+
+    // Displaying 10 results per page
+    recipes.slice(start, end).forEach(renderRecipe);
+
+    // Rendering pagination buttons
+    renderButtons(page, recipes.length, resPerPage);
 
 };

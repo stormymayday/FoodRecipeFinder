@@ -46,13 +46,28 @@ const controlSearch = async () => {
 };
 
 // Search form event listener (on submit)
-elements.searchForm.addEventListener('submit', e => {
+elements.searchForm.addEventListener('submit', event => {
 
     // Preventing page reload
-    e.preventDefault();
+    event.preventDefault();
 
     // Called whenever the form is submitted
     controlSearch();
 
 });
 
+elements.searchResPages.addEventListener('click', event => {
+
+    const btn = event.target.closest('.btn-inline');
+
+    if (btn) {
+
+        const goToPage = parseInt(btn.dataset.goto, 10);
+
+        searchView.clearResults();
+
+        searchView.renderResults(state.search.result, goToPage);
+
+    }
+
+});
