@@ -1,4 +1,5 @@
 import Search from './models/Search';
+import Recipe from './models/Recipe';
 import * as searchView from './views/searchView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
@@ -10,64 +11,59 @@ import { elements, renderLoader, clearLoader } from './views/base';
  */
 const state = {};
 
-// Search controller
+// Search Controller
 const controlSearch = async () => {
+	// Getting query from the view
+	const query = searchView.getInput();
+	console.log(query);
 
-    // Getting query from the view
-    const query = searchView.getInput();
-    console.log(query);
+	if (query) {
+		// Instantiating new Search object and storing it in the Global State
+		state.search = new Search(query);
 
-    if (query) {
+		// Prepearing the UI:
+		// Clearing the input field
+		searchView.clearInput();
 
-        // Instantiating new Search object and storing it in the Global State
-        state.search = new Search(query);
+		// Clearing the results list from the previous search
+		searchView.clearResults();
 
-        // Prepearing the UI:
-        // Clearing the input field
-        searchView.clearInput();
+		// Rendering the loader
+		renderLoader(elements.searchResult);
 
-        // Clearing the results list from the previous search
-        searchView.clearResults();
+		// Searching the recipes
+		await state.search.getResults();
 
-        // Rendering the loader
-        renderLoader(elements.searchResult);
+		// Clearing the loader
+		clearLoader();
 
-        // Searching the recipes
-        await state.search.getResults();
-
-        // Clearing the loader
-        clearLoader();
-
-        // Rendering the results
-        searchView.renderResults(state.search.result);
-
-    }
-
+		// Rendering the results
+		searchView.renderResults(state.search.result);
+	}
 };
 
+// Recipe Controller
+const r = new Recipe(47746);
+r.getRecipe();
+console.log(r);
+
 // Search form event listener (on submit)
-elements.searchForm.addEventListener('submit', event => {
+elements.searchForm.addEventListener('submit', (event) => {
+	// Preventing page reload
+	event.preventDefault();
 
-    // Preventing page reload
-    event.preventDefault();
-
-    // Called whenever the form is submitted
-    controlSearch();
-
+	// Called whenever the form is submitted
+	controlSearch();
 });
 
-elements.searchResPages.addEventListener('click', event => {
+elements.searchResPages.addEventListener('click', (event) => {
+	const btn = event.target.closest('.btn-inline');
 
-    const btn = event.target.closest('.btn-inline');
+	if (btn) {
+		const goToPage = parseInt(btn.dataset.goto, 10);
 
-    if (btn) {
+		searchView.clearResults();
 
-        const goToPage = parseInt(btn.dataset.goto, 10);
-
-        searchView.clearResults();
-
-        searchView.renderResults(state.search.result, goToPage);
-
-    }
-
+		searchView.renderResults(state.search.result, goToPage);
+	}
 });
