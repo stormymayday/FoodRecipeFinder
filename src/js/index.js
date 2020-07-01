@@ -15,7 +15,6 @@ const state = {};
 const controlSearch = async () => {
 	// Getting query from the view
 	const query = searchView.getInput();
-	console.log(query);
 
 	if (query) {
 		// Instantiating new Search object and storing it in the Global State
@@ -85,8 +84,16 @@ const controlRecipe = async () => {
 			// Getting recipe data
 			await state.recipe.getRecipe();
 
-			// Calling Recipe class methods
+			// TESTING
+			console.log(state.recipe.ingredients);
+
+			// Parsing the ingredients
+			state.recipe.parseIngredients();
+
+			// Calculating the cooking time
 			state.recipe.calcCookingTime();
+
+			// Calculating the number of servings
 			state.recipe.calcServings();
 
 			// Rendering the Recipe

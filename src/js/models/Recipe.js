@@ -31,4 +31,67 @@ export default class Recipe {
 	calcServings() {
 		this.servings = 4;
 	}
+
+	// Standardizing ingredients format
+	parseIngredients() {
+		const unitsLong = [ 'tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds' ];
+
+		const unitsShort = [ 'tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound' ];
+
+		const newIngredients = this.ingredients.map((el) => {
+			// Shortening measurement units
+			let ingredient = el.toLowerCase();
+			unitsLong.forEach((unit, i) => {
+				ingredient = ingredient.replace(unit, unitsShort[i]);
+			});
+
+			// Removing parentheses
+			ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
+
+			// Parsing ingredients into count, unit, and ingredient
+			// Converting ingredient into an array
+			const arrIngredient = ingredient.split(' ');
+
+			// Finding index (location) of unit of measurement
+			const unitIndex = arrIngredient.findIndex((element) => unitsShort.includes(element));
+
+			let objIngredient;
+
+			if (unitIndex > -1) {
+				// A unit of measurement was found
+				const arrCount = arrIngredient.slice(0, unitIndex);
+
+				let count;
+				if (arrCount.length === 1) {
+					count = eval(arrIngredient[0].replace('-', '+'));
+				} else {
+					count = eval(arrIngredient.slice(0, unitIndex).join('+'));
+				}
+
+				objIngredient = {
+					count: count,
+					unit: arrIngredient[unitIndex],
+					ingredient: arrIngredient.slice(unitIndex + 1).join(' ')
+				};
+			} else if (parseInt(arrIngredient[0], 10)) {
+				// A unit of measurement was not found but first element is a number
+				objIngredient = {
+					count: parseInt(arrIngredient[0], 10),
+					unit: '',
+					ingredient: arrIngredient.slice(1).join(' ')
+				};
+			} else if (unitIndex === -1) {
+				// A unit of measurement was not found and first element is NaN
+				objIngredient = {
+					count: 1,
+					unit: '',
+					ingredient: ingredient
+				};
+			}
+
+			return objIngredient;
+		});
+
+		this.ingredients = newIngredients;
+	}
 }
