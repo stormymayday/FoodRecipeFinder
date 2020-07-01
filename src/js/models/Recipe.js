@@ -35,8 +35,8 @@ export default class Recipe {
 	// Standardizing ingredients format
 	parseIngredients() {
 		const unitsLong = [ 'tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds' ];
-
 		const unitsShort = [ 'tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound' ];
+		const units = [ ...unitsShort, 'kg', 'g' ];
 
 		const newIngredients = this.ingredients.map((el) => {
 			// Shortening measurement units
@@ -53,7 +53,7 @@ export default class Recipe {
 			const arrIngredient = ingredient.split(' ');
 
 			// Finding index (location) of unit of measurement
-			const unitIndex = arrIngredient.findIndex((element) => unitsShort.includes(element));
+			const unitIndex = arrIngredient.findIndex((element) => units.includes(element));
 
 			let objIngredient;
 
@@ -63,9 +63,11 @@ export default class Recipe {
 
 				let count;
 				if (arrCount.length === 1) {
-					count = eval(arrIngredient[0].replace('-', '+'));
+					// count = eval(arrIngredient[0].replace('-', '+'));
+					count = Math.round(eval(arrIngredient[0].replace('-', '+')) * 100) / 100;
 				} else {
-					count = eval(arrIngredient.slice(0, unitIndex).join('+'));
+					// count = eval(arrIngredient.slice(0, unitIndex).join('+'));
+					count = Math.round(eval(arrIngredient.slice(0, unitIndex).join('+')) * 100) / 100;
 				}
 
 				objIngredient = {
@@ -83,7 +85,7 @@ export default class Recipe {
 			} else if (unitIndex === -1) {
 				// A unit of measurement was not found and first element is NaN
 				objIngredient = {
-					count: 1,
+					count: '',
 					unit: '',
 					ingredient: ingredient
 				};
