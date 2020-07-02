@@ -63,11 +63,11 @@ export default class Recipe {
 
 				let count;
 				if (arrCount.length === 1) {
-					// count = eval(arrIngredient[0].replace('-', '+'));
-					count = Math.round(eval(arrIngredient[0].replace('-', '+')) * 100) / 100;
+					count = eval(arrIngredient[0].replace('-', '+'));
+					// count = Math.round(eval(arrIngredient[0].replace('-', '+')) * 100) / 100;
 				} else {
-					// count = eval(arrIngredient.slice(0, unitIndex).join('+'));
-					count = Math.round(eval(arrIngredient.slice(0, unitIndex).join('+')) * 100) / 100;
+					count = eval(arrIngredient.slice(0, unitIndex).join('+'));
+					// count = Math.round(eval(arrIngredient.slice(0, unitIndex).join('+')) * 100) / 100;
 				}
 
 				objIngredient = {

@@ -83,15 +83,17 @@ const controlRecipe = async () => {
 		// Rendering the loader
 		renderLoader(elements.recipe);
 
+		// Highlighting selected search item
+		if (state.search) {
+			searchView.highlightSelected(id);
+		}
+
 		// Creating new Recipe object and saving in the Global State
 		state.recipe = new Recipe(id);
 
 		try {
 			// Getting recipe data
 			await state.recipe.getRecipe();
-
-			// TESTING
-			console.log(state.recipe.ingredients);
 
 			// Parsing the ingredients
 			state.recipe.parseIngredients();
