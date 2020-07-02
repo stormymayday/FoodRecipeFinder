@@ -117,3 +117,18 @@ const controlRecipe = async () => {
 
 // Adding Event Listener on events: hashchange in the url, page load:
 [ 'hashchange', 'load' ].forEach((event) => window.addEventListener(event, controlRecipe));
+
+// Increase / Decrease number of servings buttons
+elements.recipe.addEventListener('click', (event) => {
+	if (event.target.matches('.btn-decrease, .btn-decrease *')) {
+		if (state.recipe.servings > 1) {
+			state.recipe.updateServings('dec');
+			recipeView.updateServingsIngredients(state.recipe);
+		}
+	} else if (event.target.matches('.btn-increase, .btn-increase *')) {
+		if (state.recipe.servings <= 100) {
+			state.recipe.updateServings('inc');
+			recipeView.updateServingsIngredients(state.recipe);
+		}
+	}
+});
