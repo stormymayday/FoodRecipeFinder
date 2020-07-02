@@ -1,5 +1,9 @@
 import { elements } from './base';
 
+export const clearList = () => {
+	elements.shopping.innerHTML = '';
+};
+
 export const renderItem = (item) => {
 	// Creating markup
 	const markup = `
@@ -26,5 +30,7 @@ export const deleteItem = (id) => {
 	const item = document.querySelector(`[data-itemid="${id}"]`);
 
 	// Removing item from the UI
-	item.parentNode.removeChild(item);
+	if (item) {
+		item.parentNode.removeChild(item);
+	}
 };
