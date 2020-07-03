@@ -15,8 +15,6 @@ import { elements, renderLoader, clearLoader } from './views/base';
  * - Liked recipes
  */
 const state = {};
-//TESTING
-window.state = state;
 
 // Search Controller
 const controlSearch = async () => {
@@ -80,7 +78,6 @@ elements.searchResPages.addEventListener('click', (event) => {
 const controlRecipe = async () => {
 	// Getting recipe ID from url
 	const id = window.location.hash.replace('#', '');
-	// console.log(id);
 
 	if (id) {
 		// Clearing previous recipe
