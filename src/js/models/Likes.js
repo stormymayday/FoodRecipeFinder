@@ -15,6 +15,9 @@ export default class Likes {
 		// Pushing object into the array
 		this.likes.push(like);
 
+		// Saving data to localStorage
+		this.persistData();
+
 		// Returning the object
 		return like;
 	}
@@ -25,6 +28,9 @@ export default class Likes {
 
 		// Deleting element based on ID
 		this.likes.splice(index, 1);
+
+		// Deleting data from localStorage
+		this.persistData();
 	}
 
 	isLiked(id) {
@@ -33,5 +39,18 @@ export default class Likes {
 
 	getNumLikes() {
 		return this.likes.length;
+	}
+
+	persistData() {
+		// Cnverting likes array into a string and putting it into localStorage
+		localStorage.setItem('likes', JSON.stringify(this.likes));
+	}
+
+	readStorage() {
+		// Converting string into an array and saving into the storage variable
+		const storage = JSON.parse(localStorage.getItem('likes'));
+
+		// Restoring likes from localStorage
+		if (storage) this.likes = storage;
 	}
 }
