@@ -33,13 +33,10 @@ body {
 /* container start */
 
 .container {
-	/* max-width: 120rem;
+	max-width: 120rem;
 	margin: 4vw auto;
-	border-radius: 6px; */
-	width: 100%;
-	margin: 0;
-	border-radius: 0;
 	background-color: #fff;
+	border-radius: 6px;
 	overflow: hidden;
 	box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
 	display: grid;
