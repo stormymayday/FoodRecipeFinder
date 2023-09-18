@@ -1,6 +1,9 @@
 import './sass/main.scss';
 import logo from '/favicon.png';
 import timeout from './js/controller';
+import showRecipe from './js/showRecipe.js';
+
+showRecipe();
 
 document.querySelector('#app').innerHTML = `
     <div class="container">
