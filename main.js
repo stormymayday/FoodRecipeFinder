@@ -1,7 +1,7 @@
 import './sass/main.scss'
-// import javascriptLogo from './javascript.svg'
 import logo from '/favicon.png'
 import { setupCounter } from './counter.js'
+import timeout from './js/controller';
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -16,6 +16,4 @@ document.querySelector('#app').innerHTML = `
       Click on the Vite logo to learn more
     </p>
   </div>
-`
-
-setupCounter(document.querySelector('#counter'))
+`;
