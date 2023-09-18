@@ -1,8 +1,13 @@
+import renderSpinner from "./renderSpinner.js";
+
 const showRecipe = async () => {
 
     try {
 
-        // 1. Loading a recipe
+        const recipeContainer = document.querySelector('.recipe');
+
+        // // 1. Loading a recipe
+        renderSpinner(recipeContainer);
 
         const response = await fetch('https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bcd09');
 

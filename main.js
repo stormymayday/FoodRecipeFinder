@@ -3,6 +3,7 @@ import logo from '/favicon.png';
 import icons from '/icons.svg';
 import timeout from './js/controller';
 import showRecipe from './js/showRecipe.js';
+import renderSpinner from './js/renderSpinner.js';
 
 document.querySelector('#app').innerHTML = `
     <div class="container">

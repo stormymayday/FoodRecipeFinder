@@ -1,16 +1,20 @@
 const renderSpinner = (parentElement) => {
 
+    const newDiv = document.createElement("div");
+
+    newDiv.classList.add('spinner');
+
     const markup = `
-        <div class="spinner">
           <svg>
             <use href="/icons.svg#icon-loader"></use>
           </svg>
-        </div> 
   `;
+
+    newDiv.innerHTML = markup;
 
     parentElement.innerHTML = ``;
 
-    parentElement.insertAdjacentElement('afterbegin', markup);
+    parentElement.insertAdjacentElement('afterbegin', newDiv);
 
 };
 
