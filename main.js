@@ -4,28 +4,6 @@ import icons from '/icons.svg';
 import timeout from './js/controller';
 import showRecipe from './js/showRecipe.js';
 
-showRecipe();
-
-// Icons
-const iconAlertCircle = `${icons}"#icon-alert-circle"`;
-const iconAlertTriangle = `${icons}"#icon-alert-triangle"`;
-const iconArrowLeft = `${icons}"#icon-arrow-left"`;
-const iconArrowRight = `${icons}"#icon-arrow-right"`;
-const iconBookmark = `${icons}"#icon-bookmark"`;
-const iconBookmarkFill = `${icons}"#icon-bookmark-fill"`;
-const iconCheck = `${icons}"#icon-check"`;
-const iconClock = `${icons}"#icon-clock"`;
-const iconEdit = `${icons}"#icon-edit"`;
-const iconLoader = `${icons}"#icon-loader"`;
-const iconMinusCircle = `${icons}"#icon-minus-circle"`;
-const iconPlusCircle = `${icons}"#icon-plus-circle"`;
-const iconSearch = `${icons}#icon-search`;
-const iconSend = `${icons}#icon-send`;
-const iconSmile = `${icons}#icon-smile`;
-const iconUser = `${icons}#icon-user`;
-const iconUploadCloud = `${icons}#icon-upload-cloud`;
-const iconUsers = `${icons}#icon-users`;
-
 document.querySelector('#app').innerHTML = `
     <div class="container">
       <header class="header">
@@ -38,7 +16,7 @@ document.querySelector('#app').innerHTML = `
           />
           <button class="btn search__btn">
             <svg class="search__icon">
-              <use href=${iconSearch}></use>
+              <use href="/icons.svg#icon-search""></use>
             </svg>
             <span>Search</span>
           </button>
@@ -49,7 +27,7 @@ document.querySelector('#app').innerHTML = `
             <li class="nav__item">
               <button class="nav__btn nav__btn--add-recipe">
                 <svg class="nav__icon">
-                  <use href=${iconEdit}></use>
+                  <use href="/icons.svg#icon-edit"></use>
                 </svg>
                 <span>Add recipe</span>
               </button>
@@ -57,7 +35,7 @@ document.querySelector('#app').innerHTML = `
             <li class="nav__item">
               <button class="nav__btn nav__btn--bookmarks">
                 <svg class="nav__icon">
-                  <use href=${iconBookmark}></use>
+                  <use href="/icons.svg#icon-bookmark"></use>
                 </svg>
                 <span>Bookmarks</span>
               </button>
@@ -66,7 +44,7 @@ document.querySelector('#app').innerHTML = `
                   <div class="message">
                     <div>
                       <svg>
-                        <use href=${iconSmile}></use>
+                        <use href="/icons.svg#icon-smile"></use>
                       </svg>
                     </div>
                     <p>
@@ -107,7 +85,7 @@ document.querySelector('#app').innerHTML = `
                 <p class="preview__publisher">The Pioneer Woman</p>
                 <div class="preview__user-generated">
                   <svg>
-                    <use href=${iconUser}></use>
+                    <use href="/icons.svg#icon-user"></use>
                   </svg>
                 </div>
               </div>
@@ -119,13 +97,14 @@ document.querySelector('#app').innerHTML = `
         <div class="pagination">
           <!-- <button class="btn--inline pagination__btn--prev">
             <svg class="search__icon">
-              <use href="src/img/icons.svg#icon-arrow-left"${iconArrowLeft}
+              <use href="/icons.svg#icon-arrow-left"></use>
+            </svg>
             <span>Page 1</span>
           </button>
           <button class="btn--inline pagination__btn--next">
             <span>Page 3</span>
             <svg class="search__icon">
-              <use href=${iconArrowRight}></use>
+              <use href="/icons.svg#icon-arrow-right"></use>
             </svg>
           </button> -->
         </div>
@@ -146,7 +125,7 @@ document.querySelector('#app').innerHTML = `
         <div class="message">
           <div>
             <svg>
-              <use href=${iconSmile}></use>
+              <use href="/icons.svg#icon-smile"></use>
             </svg>
           </div>
           <p>Start by searching for a recipe or an ingredient. Have fun!</p>
@@ -154,14 +133,14 @@ document.querySelector('#app').innerHTML = `
 
         <!-- <div class="spinner">
           <svg>
-            <use href=${iconLoader}></use>
+            <use href="/icons.svg#icon-loader"></use>
           </svg>
         </div> -->
 
         <!-- <div class="error">
             <div>
               <svg>
-                <use href=${iconAlertTriangle}></use>
+                <use href="/icons.svg#icon-alert-triangle"></use>
               </svg>
             </div>
             <p>No recipes found for your query. Please try again!</p>
@@ -178,14 +157,14 @@ document.querySelector('#app').innerHTML = `
         <div class="recipe__details">
           <div class="recipe__info">
             <svg class="recipe__info-icon">
-              <use href=${iconClock}></use>
+              <use href="/icons.svg#icon-clock"></use>
             </svg>
             <span class="recipe__info-data recipe__info-data--minutes">45</span>
             <span class="recipe__info-text">minutes</span>
           </div>
           <div class="recipe__info">
             <svg class="recipe__info-icon">
-              <use href=${iconUsers}></use>
+              <use href="/icons.svg#icon-users"></use>
             </svg>
             <span class="recipe__info-data recipe__info-data--people">4</span>
             <span class="recipe__info-text">servings</span>
@@ -193,12 +172,12 @@ document.querySelector('#app').innerHTML = `
             <div class="recipe__info-buttons">
               <button class="btn--tiny btn--increase-servings">
                 <svg>
-                  <use href=${iconMinusCircle}></use>
+                  <use href="/icons.svg#icon-minus-circle"></use>
                 </svg>
               </button>
               <button class="btn--tiny btn--increase-servings">
                 <svg>
-                  <use href=${iconPlusCircle}></use>
+                  <use href="/icons.svg#icon-plus-circle"></use>
                 </svg>
               </button>
             </div>
@@ -206,12 +185,12 @@ document.querySelector('#app').innerHTML = `
 
           <div class="recipe__user-generated">
             <svg>
-              <use href=${iconUser}></use>
+              <use href="/icons.svg#icon-user"></use>
             </svg>
           </div>
           <button class="btn--round">
             <svg class="">
-              <use href=${iconBookmarkFill}></use>
+              <use href="/icons.svg#icon-bookmark-fill"></use>
             </svg>
           </button>
         </div>
@@ -221,7 +200,7 @@ document.querySelector('#app').innerHTML = `
           <ul class="recipe__ingredient-list">
             <li class="recipe__ingredient">
               <svg class="recipe__icon">
-                <use href=${iconCheck}></use>
+                <use href="/icons.svg#icon-check"></use>
               </svg>
               <div class="recipe__quantity">1000</div>
               <div class="recipe__description">
@@ -232,7 +211,7 @@ document.querySelector('#app').innerHTML = `
 
             <li class="recipe__ingredient">
               <svg class="recipe__icon">
-                <use href=${iconCheck}></use>
+                <use href="/icons.svg#icon-check"></use>
               </svg>
               <div class="recipe__quantity">0.5</div>
               <div class="recipe__description">
@@ -257,7 +236,7 @@ document.querySelector('#app').innerHTML = `
           >
             <span>Directions</span>
             <svg class="search__icon">
-              <use href=${iconArrowRight}></use>
+              <use href="/icons.svg#icon-arrow-right"></use>
             </svg>
           </a>
         </div>
@@ -331,10 +310,27 @@ document.querySelector('#app').innerHTML = `
 
         <button class="btn upload__btn">
           <svg>
-            <use href=${iconUploadCloud}></use>
+            <use href="/icons.svg#icon-upload-cloud"></use>
           </svg>
           <span>Upload</span>
         </button>
       </form>
     </div>
 `;
+
+const renderRecipe = async () => {
+
+  const recipeMarkup = await showRecipe();
+
+  const newDiv = document.createElement("div");
+  newDiv.innerHTML = recipeMarkup;
+
+  const recipeContainer = document.querySelector('.recipe');
+
+  recipeContainer.innerHTML = '';
+
+  recipeContainer.insertAdjacentElement('afterbegin', newDiv);
+
+};
+
+renderRecipe();
