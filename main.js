@@ -1,6 +1,5 @@
-import './sass/main.scss'
-import logo from '/favicon.png'
-import { setupCounter } from './counter.js'
+import './sass/main.scss';
+import logo from '/favicon.png';
 import timeout from './js/controller';
 
 document.querySelector('#app').innerHTML = `
