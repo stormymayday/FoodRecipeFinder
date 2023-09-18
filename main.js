@@ -131,12 +131,6 @@ document.querySelector('#app').innerHTML = `
           <p>Start by searching for a recipe or an ingredient. Have fun!</p>
         </div>
 
-        <!-- <div class="spinner">
-          <svg>
-            <use href="/icons.svg#icon-loader"></use>
-          </svg>
-        </div> -->
-
         <!-- <div class="error">
             <div>
               <svg>
