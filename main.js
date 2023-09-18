@@ -1,4 +1,4 @@
-import './style.css'
+import './sass/main.scss'
 // import javascriptLogo from './javascript.svg'
 import logo from '/favicon.png'
 import { setupCounter } from './counter.js'
