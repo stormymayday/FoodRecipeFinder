@@ -1,9 +1,29 @@
 import './sass/main.scss';
 import logo from '/favicon.png';
+import icons from '/icons.svg';
 import timeout from './js/controller';
 import showRecipe from './js/showRecipe.js';
 
 showRecipe();
+
+// Icons
+const iconAlertCircle = `${icons}"#icon-alert-circle"`;
+const iconAlertTriangle = `${icons}"#icon-alert-triangle"`;
+const iconArrowLeft = `${icons}"#icon-arrow-left"`;
+const iconArrowRight = `${icons}"#icon-arrow-right"`;
+const iconBookmark = `${icons}"#icon-bookmark"`;
+const iconBookmarkFill = `${icons}"#icon-bookmark-fill"`;
+const iconCheck = `${icons}"#icon-check"`;
+const iconClock = `${icons}"#icon-clock"`;
+const iconEdit = `${icons}"#icon-edit"`;
+const iconMinusCircle = `${icons}"#icon-minus-circle"`;
+const iconPlusCircle = `${icons}"#icon-plus-circle"`;
+const iconSearch = `${icons}#icon-search`;
+const iconSend = `${icons}#icon-send`;
+const iconSmile = `${icons}#icon-smile`;
+const iconUser = `${icons}#icon-user`;
+const iconUploadCloud = `${icons}#icon-upload-cloud`;
+const iconUsers = `${icons}#icon-users`;
 
 document.querySelector('#app').innerHTML = `
     <div class="container">
@@ -17,7 +37,7 @@ document.querySelector('#app').innerHTML = `
           />
           <button class="btn search__btn">
             <svg class="search__icon">
-              <use href="src/img/icons.svg#icon-search"></use>
+              <use href=${iconSearch}></use>
             </svg>
             <span>Search</span>
           </button>
